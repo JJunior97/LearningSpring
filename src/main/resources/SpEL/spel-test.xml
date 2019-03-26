@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <!-- <bean/> definitions here -->
+
+    <!-- ################################# L I S T Y ################################################################################ -->
+    <util:list id ="numbers" value-type = "java.lang.Integer">  <!-- deklaracja prostej listy integer'ów, muszę podać value-type! -->
+        <value>10</value>
+        <value>20</value>
+        <value>30</value>
+    </util:list>
+
+    <util:list id = "cities">   <!-- Kiedy elementami listy są inne komponenty, nie podaję value-type, są to po prostu komponenty zagnieżdżone -->
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Chicago" p:state="IL" p:population="2853114"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Atlanta" p:state="GA" p:population="537958"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Dallas" p:state="TX" p:population="1279910"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Houston" p:state="TX" p:population="2242193"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Odessa" p:state="TX" p:population="90943"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="El Paso" p:state="TX" p:population="613190"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Jal" p:state="NM" p:population="1996"/>
+
+        <bean class="SpEL.Klasy.City"
+            p:name="Las Cruces" p:state="NM" p:population="91865"/>
+
+    </util:list>
+
+    <bean id = "John" class="SpEL.Klasy.Citizen"
+        p:name="John" p:surname="Eldredge" p:city="#{cities[4]}"/>
+
+    <bean id = "Mike" class="SpEL.Klasy.Citizen"
+        p:name="Mike" p:surname="Robertson" p:city="#{cities[T(java.lang.Math).random() * cities.size()]}"/>    <!-- losuję miasto, korzystając z funkcji random() -->
+
+    <!-- ################################################# M A P Y / P R O P E R T I E S ################################################################# -->
+    <util:map id = "cityMap">       <!-- '-' w nazwie komponentu sprawia, że Spring wariuje! -->
+        <entry key="Chicago" value="2853114"/>
+        <entry key="Atlanta" value="537958"/>
+        <entry key="Dallas" value="1279910"/>
+        <entry key="Houston" value="2242193"/>
+        <entry key="Odessa" value="90943"/>
+        <entry key="El Paso" value="613190"/>
+        <entry key="Jal" value="1996"/>
+        <entry key="Las Cruces" value="91865"/>
+    </util:map>
+
+    <util:properties id="MyProps">
+
+    </util:properties>
+
+    <bean id = "Harry" class="SpEL.Klasy.CitizenType2"
+        p:name="Harry" p:surname="McKinley" p:cityPopulation="#{cityMap['Dallas']}"/>
+
+    <bean id = "prop1" class="SpEL.Klasy.MyProp"
+        p:homePath="#{systemEnvironment['JAVA_HOME']}"/>
+
+    <bean id = "test" class="SpEL.TestClass">
+        <property name="homePath" value="#{systemEnvironment['JAVA_HOME']}"/>   <!-- W Springu niejawnie zdefiniowana jest niemodyfikowalna mapa 'systemEnvironment' -->
+        <property name="bigCities" value="#{cities.?[population gt 100000]}"/>  <!-- Przesiewanie listy w SpEL -->
+        <property name="subString" value="#{'This is a test'[3]}"/>
+        <property name="firstBigCity" value="#{cities.^[population gt 100000]}"/>
+        <property name="lastBigCity" value="#{cities.$[population gt 100000]}"/>
+        <property name="cityNames" value="#{cities.![name]}"/>
+        <property name="cityNamesStates" value="#{cities.![name + ', ' + state]}"/>
+        <property name="bigCityNamesStates" value="#{cities.?[population gt 100000].![name + ', ' + state]}"/>
+        <property name="TX_Cities" value="#{cities.?[state == 'TX'].![name + ', ' + state]}"/>
+        <property name="smallBigCities" value="#{cities.?[population gt 1500000 || population lt 100000].![name]}"/>
+        <property name="cityPopulations" value="#{cities.![population]}"/>
+    </bean>
+
+</beans>
