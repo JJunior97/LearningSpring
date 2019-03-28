@@ -3,8 +3,27 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+    default-autowire="constructor">
 
+    <bean id = "instrument" class="Rozdzial3.Klasy.Saxophone"/>
+    <bean id = "sonnet29" class="Rozdzial3.Klasy.Poem29"/>
+
+    <bean id = "kenny" class="Rozdzial3.Klasy.Instrumentalist">
+        <property name="instrument" ref="instrument"/>
+        <property name="age" value="30"/>
+    </bean>
+
+    <bean id = "kenny2" class="Rozdzial3.Klasy.Instrumentalist"
+        autowire="byName" p:age="30"/>                  <!-- To samo co wyżej, ale z automatycznym wiązaniem na podstawie
+                                                         nazwy - pole 'instrument' zostaje automatyczne związane z komponentem
+                                                          o id 'instrument' -->
+
+    <bean id = "duke" class="Rozdzial3.Klasy.PoeticJuggler"/>
+
+    <bean id = "harry" class="Rozdzial3.Klasy.PoeticJuggler"/>
+
+    <bean id = "mike" class="Rozdzial3.Klasy.PoeticJuggler"/>
 
 
 </beans>

@@ -1,11 +1,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="constructor">
+
+    <context:annotation-config/>
 
     <bean id = "instrument" class="Rozdzial3.Klasy.Saxophone"/>
+    <bean id = "sonnet29" class="Rozdzial3.Klasy.Poem29"/>
 
     <bean id = "kenny" class="Rozdzial3.Klasy.Instrumentalist">
         <property name="instrument" ref="instrument"/>
@@ -16,6 +21,12 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         autowire="byName" p:age="30"/>                  <!-- To samo co wyżej, ale z automatycznym wiązaniem na podstawie
                                                          nazwy - pole 'instrument' zostaje automatyczne związane z komponentem
                                                           o id 'instrument' -->
+
+    <bean id = "duke" class="Rozdzial3.Klasy.PoeticJuggler"/>
+
+    <bean id = "harry" class="Rozdzial3.Klasy.PoeticJuggler"/>
+
+    <bean id = "mike" class="Rozdzial3.Klasy.PoeticJuggler"/>
 
 
 </beans>
