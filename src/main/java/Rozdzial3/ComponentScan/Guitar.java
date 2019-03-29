@@ -1,14 +1,15 @@
-package Rozdzial3.Inject;
+package Rozdzial3.ComponentScan;
 
-@StringedInstrument
-@Strumned
+import org.springframework.stereotype.Component;
+
+@Component
 public class Guitar implements Instrument {
 
     public Guitar(){
 
     }
 
-    public void play(){
+    public void play() {
         System.out.println("BRZDĘK BRZDĘK BRZDĘK");
     }
 }

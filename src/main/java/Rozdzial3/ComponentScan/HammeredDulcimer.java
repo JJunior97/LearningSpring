@@ -1,6 +1,5 @@
-package Rozdzial3.Inject;
+package Rozdzial3.ComponentScan;
 
-@StringedInstrument
 public class HammeredDulcimer implements Instrument {
 
     public HammeredDulcimer(){

@@ -1,8 +1,9 @@
-package Rozdzial3.Inject;
+package Rozdzial3.Inject_Value;
 
+
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 public class Instrumentalist implements Performer {
 
@@ -13,27 +14,26 @@ public class Instrumentalist implements Performer {
     private Instrument instrument;
     private int age;
 
-    private String song;
+    //@Value("Back in black")       //Przypisanie wartości 'na sztywno'
+    //@Value("#{systemProperties.myFavoriteSong}")          //To tylko przykład i taka właściwość nie isnieje
+    @Value("#{songs[0]}")
+    private Song song;
 
     public Instrumentalist(){
 
     }
 
     public void perform(){
-        System.out.println("GRAM " + song + " : ");
+        System.out.println("GRAM " + song.getTitle() + " : ");
         instrument.play();
     }
 
-    public String getSong() {
+    public Song getSong() {
         return song;
     }
 
-    public void setSong(String song) {
+    public void setSong(Song song) {
         this.song = song;
-    }
-
-    public String screamSong(){
-        return song;
     }
 
     public void setInstrument(Instrument instrument) {

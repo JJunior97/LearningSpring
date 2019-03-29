@@ -1,6 +1,6 @@
 package Rozdzial3.Autowired;
 
-import Rozdzial3.Inject.Performer;
+import Rozdzial3.Inject_Value.Performer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Instrumentalist2 implements Performer {

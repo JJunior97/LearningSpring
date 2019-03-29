@@ -1,6 +1,6 @@
 package SpringComponentTest;
 
-import Rozdzial3.Inject.Performer;
+import Rozdzial3.Inject_Value.Performer;
 
 public class Instrumentalist implements Performer {
     private Instrument instrument;

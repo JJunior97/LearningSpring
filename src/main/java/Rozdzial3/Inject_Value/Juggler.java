@@ -1,4 +1,4 @@
-package Rozdzial3.Inject;
+package Rozdzial3.Inject_Value;
 
 
 public class Juggler implements Performer {

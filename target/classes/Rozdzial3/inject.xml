@@ -1,21 +1,36 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config/>
 
-    <bean id = "knife" class="Rozdzial3.Inject.Knife" scope="prototype"/>
+    <bean id = "knife" class="Rozdzial3.Inject_Value.Knife" scope="prototype"/>
 
-    <bean id = "saxophone" class="Rozdzial3.Inject.Saxophone"/>
-    <bean id = "piano" class="Rozdzial3.Inject.Piano"/>
-    <bean id = "guitar" class="Rozdzial3.Inject.Guitar"/>
-    <bean id = "hammeredDulcimer" class="Rozdzial3.Inject.HammeredDulcimer"/>
+    <util:list id = "songs">
 
-    <bean id = "gorn" class="Rozdzial3.Inject.KnifeJuggler"/>
+        <bean class="Rozdzial3.Inject_Value.Song"
+            p:author="AC/DC" p:title="Back in black"/>
 
-    <bean id = "duke" class="Rozdzial3.Inject.Instrumentalist"/>
+        <bean class="Rozdzial3.Inject_Value.Song"
+            p:author="Queen" p:title="We will rock you"/>
+
+        <bean class="Rozdzial3.Inject_Value.Song"
+            p:author="Guns' n Roses" p:title="Paradise City"/>
+
+    </util:list>
+
+    <bean id = "saxophone" class="Rozdzial3.Inject_Value.Saxophone"/>
+    <bean id = "piano" class="Rozdzial3.Inject_Value.Piano"/>
+    <bean id = "guitar" class="Rozdzial3.Inject_Value.Guitar"/>
+    <bean id = "hammeredDulcimer" class="Rozdzial3.Inject_Value.HammeredDulcimer"/>
+
+    <bean id = "gorn" class="Rozdzial3.Inject_Value.KnifeJuggler"/>
+
+    <bean id = "duke" class="Rozdzial3.Inject_Value.Instrumentalist"/>
 
 
 

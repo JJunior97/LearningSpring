@@ -1,7 +1,8 @@
 package Rozdzial3;
 
-import Rozdzial3.Inject.Performer;
+import Rozdzial3.Inject_Value.Performer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -29,5 +30,6 @@ public class Main {
 
         Performer duke2 = (Performer) context2.getBean("duke");
         duke2.perform();
+
     }
 }
