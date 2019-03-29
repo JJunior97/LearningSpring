@@ -1,4 +1,4 @@
-package Rozdzial3.Klasy;
+package Rozdzial3.Autowired;
 
 import SpringComponentTest.Poem;
 

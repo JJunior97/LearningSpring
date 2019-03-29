@@ -1,7 +1,7 @@
 package SpringComponentTest;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import Rozdzial3.Inject.Performer;
+
 import java.util.List;
 
 public class OneManBand implements Performer {

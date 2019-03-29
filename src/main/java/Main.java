@@ -1,4 +1,4 @@
-import SpringComponentTest.Performer;
+import Rozdzial3.Inject.Performer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

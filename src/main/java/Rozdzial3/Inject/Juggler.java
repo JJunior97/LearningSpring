@@ -1,6 +1,5 @@
-package SpringComponentTest;
+package Rozdzial3.Inject;
 
-import Rozdzial3.Inject.Performer;
 
 public class Juggler implements Performer {
     private int beanBags = 3;

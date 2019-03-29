@@ -1,8 +1,11 @@
-package SpringComponentTest;
+package Rozdzial3.Autowired;
 
-import Rozdzial3.Inject.Performer;
+
+import javax.inject.Inject;
 
 public class Instrumentalist implements Performer {
+
+    @Inject
     private Instrument instrument;
     private int age;
 

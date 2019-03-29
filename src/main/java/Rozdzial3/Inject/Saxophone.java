@@ -1,6 +1,5 @@
-package Rozdzial3.Klasy;
+package Rozdzial3.Inject;
 
-import SpringComponentTest.Instrument;
 
 public class Saxophone implements Instrument {
     public Saxophone(){

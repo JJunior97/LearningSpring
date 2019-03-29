@@ -1,6 +1,5 @@
-package Rozdzial3.Klasy;
+package Rozdzial3.Autowired;
 
-import SpringComponentTest.Performer;
 
 public class Juggler implements Performer {
     private int beanBags = 3;

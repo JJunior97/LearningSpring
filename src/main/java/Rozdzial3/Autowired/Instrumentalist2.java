@@ -1,6 +1,13 @@
-package Rozdzial3.Klasy;
+package Rozdzial3.Autowired;
 
-public class Instrumentalist2 {
+import Rozdzial3.Inject.Performer;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Instrumentalist2 implements Performer {
+
+    @Autowired
+    @StringedInstrument
+    @Strumned
     private Instrument instrument;
     private int age;
     private String song;
@@ -26,9 +33,6 @@ public class Instrumentalist2 {
         return song;
     }
 
-    public void setInstrument(Instrument instrument) {
-        this.instrument = instrument;
-    }
 
     public void setAge(int age) {
         this.age = age;

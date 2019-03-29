@@ -1,9 +1,15 @@
-package Rozdzial3.Klasy;
+package Rozdzial3.Inject;
 
-import SpringComponentTest.Instrument;
-import SpringComponentTest.Performer;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class Instrumentalist implements Performer {
+
+    @Inject
+    //@Named("guitar")
+    @StringedInstrument
+    @Strumned
     private Instrument instrument;
     private int age;
 
