@@ -3,11 +3,13 @@ package Rozdzial3.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 @Component("eddie")
 public class Instrumentalist implements Performer{
 
     @Inject
+    @Named("piano")
     private Instrument instrument;
 
     @Inject

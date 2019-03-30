@@ -1,6 +1,7 @@
-package SpringComponentTest;
+package Rozdzial3.JavaConfiguration;
 
 public class PoeticJuggler extends Juggler {
+
     private Poem poem;
 
     public PoeticJuggler(Poem poem) {
@@ -8,13 +9,13 @@ public class PoeticJuggler extends Juggler {
         this.poem = poem;
     }
 
-    public PoeticJuggler(int beanBags, Poem poem){
+    public PoeticJuggler(int beanBags, Poem poem) {
         super(beanBags);
         this.poem = poem;
     }
 
     @Override
-    public void perform(){
+    public void perform() {
         super.perform();
         System.out.println("JEDNOCZEŚNIE RECYTUJĄC...");
         poem.recite();

@@ -1,4 +1,4 @@
-package SpringComponentTest;
+package Rozdzial3.JavaConfiguration;
 
 public class Poem29 implements Poem {
 
@@ -23,9 +23,9 @@ public class Poem29 implements Poem {
 
     }
 
-    public void recite(){
-        for(int i=0; i<lines.length; i++){
-            System.out.println(lines[i]);
+    public void recite() {
+        for(String line: lines){
+            System.out.println(line);
         }
     }
 }

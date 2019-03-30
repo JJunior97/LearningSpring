@@ -1,5 +1,6 @@
 package Rozdzial3.ComponentScan;
 
+@Skip
 public class HammeredDulcimer implements Instrument {
 
     public HammeredDulcimer(){
