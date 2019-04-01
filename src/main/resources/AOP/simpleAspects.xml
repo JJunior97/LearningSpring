@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <context:component-scan base-package="AOP.SimpleAspects">
+
+    </context:component-scan>-->
+
+    <bean id = "audience" class="AOP.SimpleAspects.Audience"/>
+    <bean id = "mike" class="AOP.SimpleAspects.Instrumentalist">
+        <property name="song" value="Danza Kuduro"/>
+    </bean>
+    <bean id = "magician" class="AOP.SimpleAspects.Magician"/>
+    <bean id = "volunteer" class="AOP.SimpleAspects.Volunteer"/>
+
+
+
+    <aop:config>
+
+<!--        <aop:aspect ref="minstrel">
+
+                <aop:pointcut id="embark" expression="execution(* *.embarkOnQuest(..))"/>
+
+                <aop:before pointcut-ref="embark" method="singBeforeQuest"/>
+
+                <aop:after pointcut-ref="embark" method="singAfterQuest"/>
+
+            </aop:aspect>-->
+
+        <aop:aspect ref="audience">
+<!--            <aop:before pointcut="execution(* AOP.SimpleAspects.Performer.perform(..))" method="takeSeats"/>
+            <aop:before pointcut="execution(* AOP.SimpleAspects.Performer.perform(..))" method="turnOffCellPhones"/>
+            <aop:after-returning pointcut="execution(* AOP.SimpleAspects.Performer.perform(..))" method="applaud"/>     &lt;!&ndash; W przypadku powodzenia (kiedy metoda perform() nie wyrzuci wyjątku) &ndash;&gt;
+            <aop:after-throwing method="demandRefund" pointcut="execution(* AOP.SimpleAspects.Performer.perform(..))"/> &lt;!&ndash; W przypadku niepowodzenia (kiedy metoda perform() wyrzuci wyjątek) &ndash;&gt;-->
+
+
+            <!-- To samo co wyżej, ale punkt przecięcia zdefiniowany w jednym miejscu i potem tylko się do niego odwołuję przez referencję -->
+<!--
+            <aop:pointcut id="performance" expression="execution(* AOP.SimpleAspects.Performer.perform(..))"/>
+
+            <aop:before method="takeSeats" pointcut-ref="performance"/>
+            <aop:before method="turnOffCellPhones" pointcut-ref="performance"/>
+            <aop:after-returning method="applaud" pointcut-ref="performance"/>
+            <aop:after-throwing method="demandRefund" pointcut-ref="performance"/>
+-->
+
+            <aop:pointcut id="performance2" expression="execution(* AOP.SimpleAspects.Performer.perform(..))"/>
+
+            <aop:around method="watchPerformance" pointcut-ref="performance2"/>
+
+        </aop:aspect>
+
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking" expression="execution(* AOP.SimpleAspects.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
+
+            <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>
