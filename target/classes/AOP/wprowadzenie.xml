@@ -18,15 +18,15 @@
     <aop:config>
 
         <aop:aspect>
-<!--            <aop:declare-parents types-matching="AOP.Wprowadzenie.Performer+"
+            <aop:declare-parents types-matching="AOP.Wprowadzenie.Performer+"
                                  implement-interface="AOP.Wprowadzenie.Contestant"
-                                 default-impl="AOP.Wprowadzenie.GraciousContestant"/>-->
+                                 default-impl="AOP.Wprowadzenie.GraciousContestant"/>
 
 
             <!--    ALTERNATYWNY SPOSÓB WSKAZANIA IMPLEMENTACJI -->
-            <aop:declare-parents types-matching="AOP.Wprowadzenie.Performer+"
+<!--            <aop:declare-parents types-matching="AOP.Wprowadzenie.Performer+"
                                  implement-interface="AOP.Wprowadzenie.Contestant"
-                                 delegate-ref="contestantDelegate"/>
+                                 delegate-ref="contestantDelegate"/>-->
         </aop:aspect>
 
     </aop:config>
